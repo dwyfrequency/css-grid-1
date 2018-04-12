@@ -10,6 +10,28 @@
 
 <body>
 
+  <div class="container">
+    <!-- .item{$}*10 will give us 10 divs with class items
+    and numbered insides -->
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+    <div class="item">4</div>
+    <div class="item">5</div>
+    <div class="item">6</div>
+    <div class="item">7</div>
+    <div class="item">8</div>
+    <div class="item">9</div>
+    <div class="item">10</div>
+  </div>
+  <style>
+    .container {
+      display: grid;
+      grid-template-columns: 1fr repeat(3, 100px);
+      grid-template-rows: 200px repeat(3, 1fr);
+      grid-gap: 10px;
+    }
+  </style>
 </body>
 
 </html>
