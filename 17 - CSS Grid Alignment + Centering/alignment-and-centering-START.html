@@ -20,7 +20,7 @@
     <div class="itm itm8">8</div>
     <div class="itm itm9">9</div>
     <div class="itm itm10">10</div>
-    <div class="itm itm11">11</div>
+    <!-- <div class="itm itm11">11</div>
     <div class="itm itm12">12</div>
     <div class="itm itm13">13</div>
     <div class="itm itm14">14</div>
@@ -49,19 +49,21 @@
     <div class="itm itm37">37</div>
     <div class="itm itm38">38</div>
     <div class="itm itm39">39</div>
-    <div class="itm itm40">40</div>
+    <div class="itm itm40">40</div> -->
   </div>
 
   <style>
     /*
-      justify-items:
-      align-items:
+      justify-items: centers the indiv items along row (x) axis
+      align-items: centers the indiv items along col (y) axis
 
-      justify-content:
-      align-content:
+      justify-content: if your container is wider than your grid,
+      you can move the grid within the container (start default) 
+      align-content: does the same but for the col (y) axis,
+      default is stretch 
 
-      align-self:
-      justify-self:
+      align-self: override container setting y-axis
+      justify-self: override container setting x-axis
 
       justify-* is row axis
       align-* is column axis
@@ -70,7 +72,27 @@
     .container {
       display: grid;
       grid-gap: 20px;
-      grid-template-columns: repeat(10, 1fr);
+      border: 10px solid var(--yellow);
+      height: 500px;
+      /* grid-template-columns: repeat(10, 130px); */
+      grid-template-columns: repeat(5, 100px);
+      /* justify-items: center;
+      align-items: center; */
+      /* shorthand for the above */
+      /* place-items: center center; */
+      place-items: stretch stretch;
+      justify-content: space-between;
+      align-content: space-between;
+    }
+
+    .itm {
+      background: #FFF;
+    }
+
+    .itm5 {
+      /* can override default on a case by case basis
+      with -self */
+      justify-self: center;
     }
   </style>
 </body>

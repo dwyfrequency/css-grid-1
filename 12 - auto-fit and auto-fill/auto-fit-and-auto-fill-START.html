@@ -12,9 +12,9 @@
   <div class="container">
     <div class="item item1">Item 01</div>
     <div class="item item2">Item 02</div>
-    <div class="item item3">Item 03</div>
+    <div class="item item3">Bonjour!</div>
     <div class="item item4">Item 04</div>
-    <div class="item item5">Item 05</div>
+    <!-- <div class="item item5">Item 05</div>
     <div class="item item6">Item 06</div>
     <div class="item item7">Item 07</div>
     <div class="item item8">Item 08</div>
@@ -29,7 +29,7 @@
     <div class="item item17">Item 17</div>
     <div class="item item18">Item 18</div>
     <div class="item item19">Item 19</div>
-    <div class="item item20">Item 20</div>
+    <div class="item item20">Item 20</div> -->
   </div>
 
   <style>
@@ -37,6 +37,46 @@
       display: grid;
       grid-gap: 20px;
       border: 10px solid var(--yellow);
+      /* auto-fill: tells grid to fill in as many on a row 
+      as it can. It will be responsive with resizing. (wrap) */
+      /* grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); */
+      /* by using minmax we can replace some media queries */
+      
+
+      /* auto-fit: will stretch the items to the end */
+      /* grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); */
+
+      /* type gtc + tab and grid-template-columns will auto display */
+      /* by using auto, the first column will take remaining 
+      space */
+      /* grid-template-columns: auto repeat(3, 150px); */
+
+      /* fit content will clamp the size at the value in parens */
+      grid-template-columns: fit-content(100px) repeat(3, 150px);
+
+    }
+
+    /* auto-fill FILLS the row with as many columns as it can fit. 
+    So it creates implicit columns whenever a new column can fit,
+     because it's trying to FILL the row with as many columns as it can. 
+     The newly added columns can and may be empty, but they will still
+      occupy a designated space in the row.
+
+    auto-fit FITS the CURRENTLY AVAILABLE columns into
+    the space by expanding them so that they take up any
+     available space. The browser does that after FILLING
+      that extra space with extra columns (as with auto-fill )
+       and then collapsing the empty ones. */
+
+    .container > * {
+      border: 3px solid blue;
+    }
+
+    .item4 {
+      /* by using auto-fill and -1, it will push the grid 
+      item to the end of the container. Note, this 
+      will not work with auto fit. */
+      /* grid-column: auto / -1; */
     }
   </style>
 </body>

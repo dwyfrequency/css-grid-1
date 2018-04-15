@@ -46,6 +46,21 @@
     .container {
       display: grid;
       grid-gap: 20px;
+      grid-template-areas: 
+      "fi fi fi fi se se se se"
+      "fi fi fi fi se se se se"
+      "fi fi fi fi se se se se"
+      "fi fi fi fi se se se se";
+    }
+    .item3 {
+      /* we can use line names to start and end 
+      just use -start -end */
+      /* grid-column: fi-start / fi-end; */
+      /* start this column where fi begins in the template
+      area and end it where se finishes */
+      grid-column: fi-start / se-end;
+      /* end where fi ends */
+      grid-row: fi-end;
     }
   </style>
 </body>
