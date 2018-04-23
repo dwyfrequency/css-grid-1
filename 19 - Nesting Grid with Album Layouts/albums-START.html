@@ -101,10 +101,12 @@
       display: grid;
       /* auto-fit allows the other items to be next to one another */
       grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      grid-gap: 20px;
     }
 
     .album {
       background: rgba(255, 255, 255, 0.2);
+      /* offset-x | offset-y | blur-radius | color */
       box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
       padding: 20px;
       display: grid;
@@ -112,6 +114,7 @@
       grid-gap: 10px;
       align-items: center;
       color: #FFF;
+      font-weight: 100;
     }
 
     .album__artwork {

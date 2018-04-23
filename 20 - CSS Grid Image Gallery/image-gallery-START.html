@@ -51,7 +51,44 @@
       border: 0;
     }
 
-    .gallery {}
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, 100px);
+      /* we'll size the implicit rows with 100px */
+      grid-auto-rows: 100px;
+      /* By default, if gaps are created in the grid when placing items, auto-positioned grid items will not fill the gaps, 
+      but instead will be added after the last item. 
+      We can change that with the dense keyword, which tells the implicit 
+      grid algorithm to try and go back and fill the gaps with the auto-placed items, changing the order of items when needed: */
+      grid-auto-flow: dense;
+    }
+
+    .item {
+      display: grid;
+      overflow: hidden;
+      grid-template-columns: 1;
+      grid-template-rows: 1;
+    }
+
+    .item.v2 {
+      grid-row: span 2;
+    }
+    .item.v3 {
+      grid-row: span 3;
+    }
+    .item.v4 {
+      grid-row: span 4;
+    }
+    
+    .item.h2 {
+      grid-column: span 2;
+    }
+    .item.h3 {
+      grid-column: span 3;
+    }
+    .item.h4 {
+      grid-column: span 4;
+    }
 
 
 
@@ -82,6 +119,43 @@
   </style>
 
   <script>
+    const gallery = document.querySelector(".gallery");
+    const overlay = document.querySelector(".overlay");
+    const overlayImage = document.querySelector("img");
+    const overlayClose = document.querySelector(".close");
+
+    /* destructoring in the argument for the horizontal and vertical values*/
+    function generateHTML([h, v]) {
+      return `
+        <div class="item h${h} v${v}">
+          <img src="images/${randomNumber(12)}.jpg">
+          <div class="item__overlay">
+            <button>View →</button>
+          </div>
+        </div>
+      `;
+    }
+
+    function randomNumber(limit) {
+      return Math.floor(Math.random() * limit) + 1;
+    }
+
+    /*we can make an empty array with 50 blank spots by 
+    using Array.from and passing it an object with a length property of 50 
+    Array.from also takes a map funct which allows us to populate what goes into each spot*/
+    const digits = Array.from({ length: 50}, () => [randomNumber(4), randomNumber(4)]);
+    
+    /*html === array
+    it takes the indiv digits pairs from the digits array 
+    uses generateHTML as the callback
+    generateHTML destructures the two numbers and generates the necessary html */
+    const html = digits.map(generateHTML).join('');
+    gallery.innerHTML = html;
+
+    /*So we have 50 divs with classes of item and we reload,
+    they will all be different */
+    console.log(html);
+
   </script>
 </body>
 
