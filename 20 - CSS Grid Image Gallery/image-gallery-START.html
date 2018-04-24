@@ -64,10 +64,49 @@
     }
 
     .item {
+      /* make each item in the grid container, a grid  */
       display: grid;
       overflow: hidden;
+      /* we  create 1 x 1 grid, reason why we do that is so that we 
+      can easily overlap  */
       grid-template-columns: 1;
       grid-template-rows: 1;
+    }
+
+    .item img {
+      grid-column: 1 / -1;
+      grid-row: 1 / -1;
+      width: 100%;
+      height: 100%;
+      /* it will trim the dimensions to fit perfectly inside it*/
+      object-fit: cover;
+    }
+
+    .item__overlay {
+      display: grid;
+      /* 32 at the end is hex for 70% transparent */
+      background: #ffc60032;
+      grid-column: 1 / -1;
+      grid-row: 1 / -1;
+      position: relative;
+      justify-items: center;
+      align-items: center;
+      /* slide something out of the item - 100% will bring it just off the actual item */
+      transform: translate(100%);
+    }
+
+    .item__overlay button {
+      background: none;
+      border: 2px solid white;
+      color: white;
+      text-transform: uppercase;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 5px;
+    }
+
+    .item:hover .item__overlay {
+      /* translate(0) moves the button back */
+      transform: translate(0);
     }
 
     .item.v2 {
@@ -145,12 +184,19 @@
     Array.from also takes a map funct which allows us to populate what goes into each spot*/
     const digits = Array.from({ length: 50}, () => [randomNumber(4), randomNumber(4)]);
     
+    /*adding some [1, 1] to fill in some of the blank spaces*/
+    digits.concat([1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], 
+    [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1]);
+
+
     /*html === array
     it takes the indiv digits pairs from the digits array 
     uses generateHTML as the callback
     generateHTML destructures the two numbers and generates the necessary html */
     const html = digits.map(generateHTML).join('');
     gallery.innerHTML = html;
+
+    const items = document.querySelectorAll
 
     /*So we have 50 divs with classes of item and we reload,
     they will all be different */
