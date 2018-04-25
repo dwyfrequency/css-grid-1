@@ -47,7 +47,7 @@
 
     .close {
       background: none;
-      color: white;
+      color: black;
       border: 0;
     }
 
@@ -144,12 +144,14 @@
 
     .overlay.open {
       display: grid;
+      align-items: center;
+      justify-items: center;
     }
 
-    .overlay figure {
+    .overlay-inner {
       background: white;
       width: 700px;
-      padding: 20px;
+      /* padding: 20px; */
     }
 
     .overlay img {
@@ -160,6 +162,7 @@
   <script>
     const gallery = document.querySelector(".gallery");
     const overlay = document.querySelector(".overlay");
+    /*empty img tag in html*/ 
     const overlayImage = document.querySelector("img");
     const overlayClose = document.querySelector(".close");
 
@@ -196,11 +199,34 @@
     const html = digits.map(generateHTML).join('');
     gallery.innerHTML = html;
 
-    const items = document.querySelectorAll
+    const items = document.querySelectorAll('.item');
+
+    function handleClick(e) {
+      /*Identifies the current target for the event, as the event traverses the DOM. It always refers to the element to which the event handler has been attached, as opposed to event.target which identifies the element on which the event occurred.*/ 
+      // When this function is used as an event handler: this === e.currentTarget
+      console.log(e.currentTarget);
+
+      /*we have the item, we look for the image tag, we grab the source for the image  */
+      const src = e.currentTarget.querySelector("img").src;
+      console.log(src);
+      overlayImage.src = src;
+      overlay.classList.add('open');
+    }
+    
+
+    function close() {
+      overlay.classList.remove('open');
+    }
+
+    items.forEach(i => {
+      i.addEventListener('click', handleClick);
+    })
+
+    overlayClose.addEventListener('click', close)
 
     /*So we have 50 divs with classes of item and we reload,
     they will all be different */
-    console.log(html);
+    // console.log(html);
 
   </script>
 </body>
