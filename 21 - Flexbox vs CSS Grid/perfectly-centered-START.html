@@ -14,13 +14,32 @@
   <div class="hero">
     <h2>Something Big Is Coming</h2>
     <p>Get Ready...</p>
+    <p>Get Ready...</p>
   </div>
 
   <style>
     .hero {
+      
       height: 200px;
       background: rgba(255, 255, 255, 0.2);
+      border: 2px solid goldenrod;
+      
+      /*grid solution*/
+      display: grid;
+      justify-items: center;
+      /* align-content determines the spacing between lines, while align-items determines how the items as a whole are aligned within the container. When there is only one line, align-content has no effect */
+      align-content: center;
+      
+      /* flexbox solution
+      display: flex;
+      flex-direction: column;
+      // centers on main axis - here y 
+      justify-content: center;
+      // centers on cross axis - here x 
+      align-items: center;
+      */
     }
+
   </style>
 </body>
 

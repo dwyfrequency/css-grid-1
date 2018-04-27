@@ -20,11 +20,21 @@
   </div>
 
   <style>
+    /* Overall this is a case for flexbox b/c if the order or number of elements in the flex container changes it will easy adjust
+    this is not as easy as with grid */
     .controls {
+      display: grid;
+      /* display: flex; */
+      align-items: center;
+      grid-column: auto;
       margin: 200px 0;
+      /* this will give use the same layout as flexbox */
+      grid-template-columns: repeat(3, auto) 1fr repeat(2, auto);
     }
 
     .scrubber {
+      /* this will flex grow to take up the rest of the space */
+      /* flex: 1; */
       background: #BADA55;
       height: 10px;
       min-width: 100px;
